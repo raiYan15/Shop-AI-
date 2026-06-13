@@ -1,0 +1,682 @@
+@import "tailwindcss/theme";
+@import "tailwindcss/utilities";
+
+:root {
+  --orange: #FF9900;
+  --orange-light: #FFB84D;
+  --orange-glow: rgba(255, 153, 0, 0.3);
+  --dark-bg: #0D1117;
+  --dark-surface: #161B22;
+  --navy: #1C2331;
+  --navy-light: #21262D;
+  --white: #FFFFFF;
+  --gray-bg: #F0F2F5;
+  --gray-50: #F9FAFB;
+  --gray-100: #F3F4F6;
+  --gray-200: #E2E8F0;
+  --gray-400: #8B949E;
+  --gray-600: #6B7280;
+  --gray-800: #1F2937;
+  --success: #10B981;
+  --error: #EF4444;
+  --warning: #F59E0B;
+  --indigo: #6366F1;
+  --font-main: 'Inter', system-ui, sans-serif;
+  --font-display: 'Outfit', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.18);
+  --shadow-xl: 0 16px 40px rgba(0,0,0,0.22);
+  --shadow-orange: 0 4px 20px rgba(255, 153, 0, 0.2);
+  /* SHARP DESIGN: strict border-radius system — max 4px */
+  --radius-none: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 2px;
+  --radius-md: 2px;
+  --radius-lg: 4px;
+  --radius-search: 3px;
+  --radius-modal: 4px;
+  /* Legacy aliases — kept at sharp values */
+  --border-radius: 2px;
+  --border-radius-lg: 4px;
+  --border-radius-xl: 4px;
+  --transition: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--gray-bg);
+  color: var(--gray-800);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-slow), color var(--transition-slow);
+  overflow-x: hidden;
+}
+
+/* ==================== DARK MODE ==================== */
+.dark body {
+  background-color: var(--dark-bg);
+  color: #E2E8F0;
+}
+
+html.dark {
+  --bg-primary: var(--dark-bg);
+  --bg-surface: var(--dark-surface);
+  --bg-card: #161B22;
+  --text-primary: #F0F6FC;
+  --text-secondary: #8B949E;
+  --border-color: rgba(48, 54, 61, 0.9);
+  --border-subtle: rgba(255,255,255,0.06);
+}
+
+html:not(.dark) {
+  --bg-primary: var(--gray-bg);
+  --bg-surface: var(--white);
+  --bg-card: var(--white);
+  --text-primary: #111827;
+  --text-secondary: #4B5563;
+  --border-color: #D1D5DB;
+  --border-subtle: rgba(0,0,0,0.06);
+}
+
+/* ==================== SCROLLBAR ==================== */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255, 153, 0, 0.35); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(--orange); }
+
+/* ==================== TYPOGRAPHY ==================== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* ==================== ENTERPRISE PANEL (replaces glassmorphism) ==================== */
+.glass {
+  background: rgba(22, 27, 34, 0.85);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.glass-dark {
+  background: rgba(13, 17, 23, 0.88);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Sharp panel card — replaces glass-card everywhere */
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-xs);
+}
+
+html.dark .glass-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255,255,255,0.07);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+}
+
+/* ==================== GRADIENTS ==================== */
+.gradient-orange {
+  background: linear-gradient(135deg, #FF9900 0%, #FFB84D 100%);
+}
+
+.gradient-navy {
+  background: linear-gradient(135deg, #1C2331 0%, #0D1117 100%);
+}
+
+.gradient-hero {
+  background:
+    radial-gradient(ellipse 90% 50% at 50% -5%, rgba(255,153,0,0.12) 0%, transparent 60%),
+    linear-gradient(180deg, #0D1117 0%, #131A22 100%);
+}
+
+/* ==================== MESH ANIMATION ==================== */
+@keyframes mesh-move {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(30px, -30px) rotate(120deg); }
+  66% { transform: translate(-20px, 20px) rotate(240deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(255,153,0,0.3); }
+  50% { box-shadow: 0 0 20px rgba(255,153,0,0.6); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes particle-float {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.5; }
+  50% { transform: translateY(-30px) translateX(15px) scale(1.05); opacity: 0.9; }
+  100% { transform: translateY(-60px) translateX(-8px) scale(0.8); opacity: 0; }
+}
+
+/* Scan-line animation for enterprise feel */
+@keyframes scan-line {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 0.04; }
+  90% { opacity: 0.04; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* Data pulse for indicators */
+@keyframes data-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-delayed { animation: float-delayed 8s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 20s linear infinite; }
+.animate-particle { animation: particle-float 4s ease-in-out infinite; }
+
+/* ==================== SKELETON LOADER ==================== */
+.skeleton {
+  background: linear-gradient(90deg, rgba(226,232,240,0.5) 25%, rgba(241,245,249,0.7) 50%, rgba(226,232,240,0.5) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 0;
+}
+
+html.dark .skeleton {
+  background: linear-gradient(90deg, rgba(22,27,34,0.8) 25%, rgba(33,38,45,0.9) 50%, rgba(22,27,34,0.8) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ==================== ENTERPRISE BUTTONS ==================== */
+/* Primary: Sharp orange, high contrast, bold typography */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 24px;
+  background: #FF9900;
+  color: #0D1117;
+  border: none;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0);
+  transition: background var(--transition);
+}
+
+.btn-primary:hover {
+  background: #FFB84D;
+  box-shadow: 0 2px 12px rgba(255,153,0,0.4);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Secondary: Sharp outlined, enterprise style */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 23px;
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  background: rgba(255,153,0,0.06);
+}
+
+/* Ghost: Minimal, contextual action */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-main);
+  font-weight: 500;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn-ghost:hover {
+  background: rgba(255,153,0,0.07);
+  color: var(--orange);
+}
+
+/* ==================== ENTERPRISE CARDS ==================== */
+/* Sharp rectangular panels — no soft shadows, strong borders */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: all var(--transition);
+}
+
+.card:hover {
+  border-color: rgba(255,153,0,0.35);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.14);
+  transform: translateY(-2px);
+}
+
+/* Data panel — zero radius, strong top border accent */
+.data-panel {
+  background: var(--bg-card);
+  border-radius: 0;
+  border: 1px solid var(--border-color);
+  border-top: 2px solid var(--orange);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==================== ENTERPRISE STATUS TAGS ==================== */
+.tag-pro {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: var(--radius-xs);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.tag-con {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  background: rgba(239, 68, 68, 0.1);
+  color: #EF4444;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-xs);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ==================== GLOW EFFECTS ==================== */
+.glow-orange {
+  box-shadow: 0 0 20px rgba(255, 153, 0, 0.3);
+}
+
+.glow-blue {
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);
+}
+
+/* ==================== STAR RATING ==================== */
+.stars {
+  display: inline-flex;
+  gap: 2px;
+}
+
+/* ==================== HORIZONTAL SCROLL ==================== */
+.scroll-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--orange) transparent;
+  -ms-overflow-style: none;
+}
+
+.scroll-container::-webkit-scrollbar { height: 3px; }
+.scroll-container::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 0; }
+
+/* ==================== ENTERPRISE SEARCH BAR ==================== */
+/* AWS/Bloomberg-inspired: rectangular, strong border, orange focus glow */
+.search-ring {
+  position: relative;
+  border-radius: var(--radius-search);
+  background: rgba(13, 17, 23, 0.7);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  transition: all 0.2s ease;
+}
+
+.search-ring:focus-within {
+  border-color: var(--orange);
+  background: rgba(13, 17, 23, 0.85);
+  box-shadow: 0 0 0 3px rgba(255,153,0,0.12), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+/* ==================== GAUGE ==================== */
+.gauge-container {
+  position: relative;
+  width: 120px;
+  height: 60px;
+  overflow: hidden;
+}
+
+/* ==================== ENTERPRISE PROGRESS BARS ==================== */
+/* Sharp rectangular progress — not pill-shaped */
+.progress-bar {
+  height: 6px;
+  border-radius: 0;
+  background: rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 0;
+  background: linear-gradient(90deg, #FF9900, #FFB84D);
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==================== ENTERPRISE CHAT ==================== */
+/* Sharp message bubbles — terminal/enterprise style */
+.chat-bubble-user {
+  background: #FF9900;
+  color: #0D1117;
+  border-radius: 3px 3px 0 3px;
+  font-weight: 500;
+}
+
+.chat-bubble-ai {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 3px 3px 3px 0;
+}
+
+/* Typing dots — kept as circular for microinteraction affordance */
+.chat-typing-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--orange);
+  border-radius: 50%;
+  animation: chat-bounce 1.4s infinite ease-in-out;
+}
+
+.chat-typing-dot:nth-child(1) { animation-delay: 0s; }
+.chat-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.chat-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes chat-bounce {
+  0%, 80%, 100% { transform: scale(0.7); opacity: 0.4; }
+  40% { transform: scale(1.1); opacity: 1; }
+}
+
+/* ==================== ENTERPRISE BADGES ==================== */
+/* Sharp rectangular status chips */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+}
+
+.badge-orange {
+  background: #FF9900;
+  color: #0D1117;
+}
+
+.badge-green {
+  background: rgba(16,185,129,0.12);
+  color: #10B981;
+  border: 1px solid rgba(16,185,129,0.3);
+}
+
+.badge-blue {
+  background: rgba(99,102,241,0.12);
+  color: #818CF8;
+  border: 1px solid rgba(99,102,241,0.3);
+}
+
+.badge-red {
+  background: rgba(239,68,68,0.12);
+  color: #F87171;
+  border: 1px solid rgba(239,68,68,0.3);
+}
+
+/* ==================== DIVIDER ==================== */
+.divider {
+  height: 1px;
+  background: var(--border-color);
+  border: none;
+}
+
+/* ==================== FOCUS STATES ==================== */
+:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+/* ==================== RESPONSIVE ==================== */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 16px; }
+}
+
+/* ==================== PAGE WRAPPER ==================== */
+.page-wrapper {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  padding-top: 72px;
+}
+
+/* ==================== SECTION ==================== */
+.section {
+  padding: 80px 0;
+}
+
+@media (max-width: 768px) {
+  .section { padding: 48px 0; }
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 10px;
+  font-family: var(--font-mono);
+}
+
+.section-title {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.section-subtitle {
+  font-size: 17px;
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-top: 14px;
+}
+
+/* ==================== GRID ==================== */
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* ==================== AI SCORE ==================== */
+.ai-score-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==================== ENTERPRISE NAV LINKS ==================== */
+/* Sharp rectangular nav items, no rounded corners */
+.nav-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: var(--radius-xs);
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--orange);
+  background: rgba(255,153,0,0.07);
+}
+
+/* ==================== HERO FLOATING CARDS ==================== */
+/* Sharp panels, no border-radius */
+.floating-card {
+  position: absolute;
+  border-radius: var(--radius-xs);
+  padding: 16px;
+  background: rgba(22, 27, 34, 0.92);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-top: 2px solid var(--orange);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+/* ==================== INPUT ==================== */
+input, textarea, select {
+  font-family: var(--font-main);
+  border-radius: var(--radius-xs) !important;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+}
+
+/* ==================== ENTERPRISE STATS INLINE ==================== */
+.stat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(255,153,0,0.08);
+  border: 1px solid rgba(255,153,0,0.15);
+  border-radius: var(--radius-xs);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--orange);
+}
+
+/* ==================== STATUS BADGE ==================== */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; box-shadow: 0 0 4px currentColor; }
+  50% { opacity: 0.5; box-shadow: 0 0 10px currentColor; }
+}
+
+@media (max-width: 640px) {
+  .status-badge { display: none !important; }
+}
+
+/* ==================== ENTERPRISE GRID OVERLAY ==================== */
+/* Used for hero background precision grid — aligns with design language */
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ==================== ENTERPRISE TABLE CELLS ==================== */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 0;
+}
+
+.data-table th, .data-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 13px;
+}
+
+.data-table th {
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  background: rgba(255,153,0,0.03);
+}

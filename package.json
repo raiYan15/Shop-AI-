@@ -1,0 +1,14 @@
+{
+  "name": "shopmind-ai-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "ShopMind AI root workspace",
+  "scripts": {
+    "frontend:dev": "npm --prefix frontend run dev",
+    "frontend:build": "npm --prefix frontend run build",
+    "frontend:lint": "npm --prefix frontend run lint",
+    "backend:dev": "python -m uvicorn backend.main_api:app --reload --host 0.0.0.0 --port 8000",
+    "backend:start": "python -m uvicorn backend.main_api:app --host 0.0.0.0 --port 8000",
+    "faiss:build": "python scripts/build_faiss.py"
+  }
+}

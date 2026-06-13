@@ -1,0 +1,16 @@
+﻿sentence-transformers
+faiss-cpu
+pandas
+numpy
+tqdm
+scikit-learn
+python-dotenv==1.0.1
+fastapi
+uvicorn[standard]
+motor==3.4.0
+pymongo==4.8.0
+apscheduler==3.10.4
+httpx==0.27.0
+passlib[bcrypt]
+python-jose[cryptography]
+email-validator

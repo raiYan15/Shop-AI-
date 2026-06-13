@@ -1,0 +1,374 @@
+/* AI Copilot Page Styling — Sharp Enterprise Terminal Design */
+.copilot-page {
+  background: linear-gradient(135deg, #1C2331 0%, #232F3E 100%);
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Sharp rectangular container — no rounded corners */
+.copilot-container {
+  background: var(--amazon-white);
+  border-radius: 2px;
+  border: 1px solid rgba(255,255,255,0.08);
+  width: 100%;
+  max-width: 900px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+
+/* Sharp header — left-aligned, enterprise style */
+.copilot-header {
+  background: linear-gradient(135deg, #232F3E 0%, #131A22 100%);
+  color: var(--amazon-white);
+  padding: 18px 24px;
+  text-align: left;
+  border-bottom: 2px solid var(--amazon-orange);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.copilot-header h1 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.copilot-header p {
+  font-size: 12px;
+  opacity: 0.6;
+  margin: 0;
+}
+
+/* Messages Container */
+.messages-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: #fafbfc;
+}
+
+html.dark .messages-container {
+  background: var(--dark-bg);
+}
+
+.message {
+  display: flex;
+  gap: 12px;
+  animation: fadeIn 0.25s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+/* Sharp square avatar — no circle */
+.message-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--amazon-white);
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.message.bot .message-avatar {
+  background: #232F3E;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.message.user .message-avatar {
+  background: var(--amazon-orange);
+}
+
+/* Sharp message bubble — rectangular with subtle border */
+.message-content {
+  max-width: 70%;
+  background: #ffffff;
+  border: 1px solid #d5d9d9;
+  border-radius: 3px;
+  padding: 11px 14px;
+  word-wrap: break-word;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+html.dark .message-content {
+  background: #161B22;
+  border-color: rgba(255,255,255,0.08);
+}
+
+.message.user .message-content {
+  background: #232F3E;
+  color: #F0F6FC;
+  border-color: rgba(255,153,0,0.2);
+  border-left: 3px solid var(--amazon-orange);
+}
+
+.message-content p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.products-preview {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #e3e6e6;
+}
+
+.message.user .products-preview {
+  border-top-color: rgba(255, 255, 255, 0.15);
+}
+
+.products-preview h4 {
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #565959;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.message.user .products-preview h4 {
+  color: rgba(255,255,255,0.6);
+}
+
+.products-preview .products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+  margin-top: 6px;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+  display: flex;
+  gap: 4px;
+  padding: 6px 0;
+}
+
+.typing-indicator span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--amazon-orange);
+  animation: typing 1.4s infinite;
+  opacity: 0.6;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 60%, 100% { opacity: 0.3; transform: scale(0.8); }
+  30% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Input Form — sharp rectangular enterprise input */
+.input-form {
+  display: flex;
+  gap: 8px;
+  padding: 14px 18px;
+  background: #f7f8f8;
+  border-top: 1px solid #d5d9d9;
+}
+
+html.dark .input-form {
+  background: #161B22;
+  border-top-color: rgba(255,255,255,0.06);
+}
+
+.message-input {
+  flex: 1;
+  border: 1.5px solid #d5d9d9;
+  border-radius: 2px;
+  padding: 9px 14px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  background: white;
+  font-family: var(--font-main);
+}
+
+html.dark .message-input {
+  background: #0D1117;
+  border-color: rgba(255,255,255,0.1);
+  color: #F0F6FC;
+}
+
+.message-input:focus {
+  border-color: var(--amazon-orange);
+  box-shadow: 0 0 0 2px rgba(255,153,0,0.12);
+}
+
+.message-input:disabled {
+  background: #f0f2f2;
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+/* Sharp send button */
+.send-button {
+  width: 38px;
+  height: 38px;
+  border-radius: 2px;
+  background: var(--amazon-orange);
+  border: none;
+  color: #0D1117;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, transform 0.1s;
+  flex-shrink: 0;
+}
+
+.send-button:hover:not(:disabled) {
+  background: #ec7600;
+}
+
+.send-button:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.send-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Suggestions — sharp rectangular chips */
+.suggestions {
+  padding: 12px 18px;
+  background: #f7f8f8;
+  border-top: 1px solid #d5d9d9;
+}
+
+html.dark .suggestions {
+  background: #161B22;
+  border-top-color: rgba(255,255,255,0.06);
+}
+
+.suggestions-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #565959;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.suggestion-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 6px;
+}
+
+.suggestion-btn {
+  background: white;
+  border: 1px solid #d5d9d9;
+  padding: 7px 10px;
+  border-radius: 2px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  font-family: var(--font-main);
+  color: #232F3E;
+}
+
+html.dark .suggestion-btn {
+  background: #0D1117;
+  border-color: rgba(255,255,255,0.08);
+  color: #8B949E;
+}
+
+.suggestion-btn:hover {
+  background: var(--amazon-orange);
+  border-color: var(--amazon-orange);
+  color: #0D1117;
+  font-weight: 600;
+}
+
+/* Scrollbar */
+.messages-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  background: rgba(255,153,0,0.3);
+  border-radius: 0;
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover {
+  background: var(--amazon-orange);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .copilot-page {
+    height: 100vh;
+    padding: 0;
+  }
+
+  .copilot-container {
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .message-content {
+    max-width: 90%;
+  }
+
+  .suggestion-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .copilot-header h1 {
+    font-size: 16px;
+  }
+
+  .messages-container {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .input-form {
+    padding: 10px 14px;
+  }
+}

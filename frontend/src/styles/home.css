@@ -1,0 +1,348 @@
+/* Home Page Styling — Sharp Enterprise Design */
+.home-page {
+  background: var(--amazon-light);
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, var(--amazon-blue) 0%, var(--amazon-accent) 100%);
+  color: var(--amazon-white);
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  line-height: 1.15;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  margin-bottom: 30px;
+  opacity: 0.85;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Sharp rectangular buttons */
+.btn {
+  padding: 11px 26px;
+  border: none;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.btn-primary {
+  background: var(--amazon-orange);
+  color: var(--amazon-white);
+  border-radius: 2px;
+}
+
+.btn-primary:hover {
+  background: #ec7600;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(255, 153, 0, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--amazon-white);
+  border: 1.5px solid rgba(255,255,255,0.6);
+  border-radius: 2px;
+}
+
+.btn-secondary:hover {
+  background: var(--amazon-white);
+  color: var(--amazon-blue);
+  transform: translateY(-1px);
+}
+
+/* Status Bar */
+.status-bar {
+  padding: 12px 20px;
+  background: var(--amazon-white);
+  border-bottom: 1px solid #d5d9d9;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 2px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status.connected {
+  background: rgba(16,185,129,0.08);
+  color: #047857;
+  border: 1px solid rgba(16,185,129,0.2);
+}
+
+.status.disconnected {
+  background: rgba(245,158,11,0.08);
+  color: #92400e;
+  border: 1px solid rgba(245,158,11,0.2);
+}
+
+.status-indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+/* Features Section — sharp panel layout */
+.features {
+  padding: 60px 20px;
+  background: var(--amazon-white);
+  margin: 16px;
+  border-radius: 2px;
+  border: 1px solid #d5d9d9;
+}
+
+.features h2 {
+  font-size: 30px;
+  margin-bottom: 36px;
+  text-align: center;
+  color: var(--amazon-blue);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.feature-card {
+  text-align: center;
+  padding: 20px;
+  border-radius: 2px;
+  background: var(--amazon-light);
+  border: 1px solid #e3e6e6;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: var(--amazon-orange);
+}
+
+.feature-card svg {
+  color: var(--amazon-orange);
+  margin-bottom: 12px;
+}
+
+.feature-card h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: var(--amazon-blue);
+}
+
+.feature-card p {
+  font-size: 13px;
+  color: #565959;
+}
+
+/* Featured Section */
+.featured-section {
+  padding: 36px 20px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.section-header h2 {
+  font-size: 26px;
+  color: var(--amazon-blue);
+}
+
+.view-all {
+  background: none;
+  border: none;
+  color: var(--amazon-orange);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 0.15s;
+}
+
+.view-all:hover {
+  color: #ec7600;
+  text-decoration: underline;
+}
+
+/* Loading and Error States */
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+/* Sharp spinner — ring style */
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(255,153,0,0.15);
+  border-top: 3px solid var(--amazon-orange);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading p {
+  color: #565959;
+  font-size: 14px;
+}
+
+.error-message {
+  background: var(--amazon-white);
+  padding: 36px 20px;
+  text-align: center;
+  border-radius: 2px;
+  margin: 16px;
+  border: 1px solid #d5d9d9;
+}
+
+.error-message p {
+  color: #b12704;
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+
+/* Quick Links — sharp rectangular link cards */
+.quick-links {
+  padding: 36px 20px;
+  background: var(--amazon-white);
+  margin: 16px;
+  border-radius: 2px;
+  border: 1px solid #d5d9d9;
+}
+
+.quick-links h2 {
+  font-size: 26px;
+  margin-bottom: 24px;
+  color: var(--amazon-blue);
+}
+
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.link-card {
+  background: var(--amazon-light);
+  padding: 24px 16px;
+  border-radius: 2px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid #e3e6e6;
+}
+
+.link-card:hover {
+  background: var(--amazon-orange);
+  color: var(--amazon-white);
+  transform: translateY(-3px);
+  border-color: var(--amazon-orange);
+}
+
+.link-icon {
+  font-size: 28px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.link-card h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--amazon-blue);
+}
+
+.link-card:hover h3 {
+  color: var(--amazon-white);
+}
+
+/* CTA Section — sharp rectangular banner */
+.cta-section {
+  background: linear-gradient(135deg, var(--amazon-blue) 0%, var(--amazon-accent) 100%);
+  color: var(--amazon-white);
+  padding: 60px 20px;
+  text-align: center;
+  margin: 16px;
+  border-radius: 2px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.cta-section h2 {
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+
+.cta-section p {
+  font-size: 15px;
+  margin-bottom: 28px;
+  opacity: 0.85;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 30px;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+  }
+
+  .features {
+    margin: 8px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .link-card {
+    padding: 16px 12px;
+  }
+
+  .cta-section {
+    margin: 8px;
+  }
+}

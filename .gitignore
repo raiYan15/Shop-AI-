@@ -1,0 +1,67 @@
+﻿# ===== OS / Editor =====
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage/
+htmlcov/
+.cache/
+
+# ===== Environments / Secrets =====
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+!frontend/.env.local.example
+!frontend/.env.production.example
+!backend/.env.production.example
+
+# ===== Node / Frontend =====
+node_modules/
+frontend/node_modules/
+dist/
+build/
+frontend/dist/
+
+# ===== Logs / Temp =====
+logs/
+debug/
+tmp/
+temp/
+*.log
+*.tmp
+*.bak
+*.cache
+
+# ===== Local DB / archives =====
+*.sqlite
+*.db
+*.zip
+*.rar
+*.7z
+
+# ===== Python env folders =====
+venv/
+.venv/
+env/
+ENV/
+
+# ===== Notebook =====
+.ipynb_checkpoints/
+
+# ===== Generated vector/index artifacts =====
+data/*.idx
+data/*id_map*.pkl
+backend/**/*.idx
+backend/**/*id_map*.pkl

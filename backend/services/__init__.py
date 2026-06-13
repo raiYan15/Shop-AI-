@@ -1,0 +1,1 @@
+# ShopMind AI — Services Package
